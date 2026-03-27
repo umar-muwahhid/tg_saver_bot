@@ -23,8 +23,8 @@ async def cmd_start(message: Message):
         "📺 YouTube\n"
         "🎵 TikTok\n"
         "🎬 VK\n"
-        "📌 Pinterest\n\n"
-        "Instagram временно не работает 🚫"
+        "📌 Pinterest\n"
+        "Instagram"
     )
 
 @router.message(lambda msg: msg.text and any(domain in msg.text for domain in SUPPORTED_DOMAINS))
