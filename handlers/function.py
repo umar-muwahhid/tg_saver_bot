@@ -25,6 +25,8 @@ async def download_and_send_media(bot, chat_id, url, media_type):
             'socket_timeout': 60,
             'extractor_retries': 5,
 
+            'ffmpeg_location': '/usr/bin/ffmpeg',
+
             'http_headers': {
                 'User-Agent': 'Mozilla/5.0',
                 'Accept-Language': 'en-US,en;q=0.9',
