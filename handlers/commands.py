@@ -8,12 +8,13 @@ import url_storage as storage
 
 router = Router()
 
-# ❌ Instagram временно убран (он ломается без cookies)
+
 SUPPORTED_DOMAINS = [
     "youtube.com", "youtu.be",
     "tiktok.com",
-    "vk.com", "vk.ru",
-    "pinterest.com", "pin.it"
+    "vk.com", "vk.ru", "vkvideo.ru",
+    "pinterest.com", "pin.it",
+    "instagram.com"
 ]
 
 @router.message(CommandStart())
@@ -24,7 +25,7 @@ async def cmd_start(message: Message):
         "🎵 TikTok\n"
         "🎬 VK\n"
         "📌 Pinterest\n"
-        "Instagramchick"
+        "🔥Instagram"
     )
 
 @router.message(lambda msg: msg.text and any(domain in msg.text for domain in SUPPORTED_DOMAINS))
