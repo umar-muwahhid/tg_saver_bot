@@ -39,8 +39,8 @@ async def download_and_send_media(bot, chat_id, url, media_type):
                 ydl_opts['format'] = 'best'
             else:
                 ydl_opts['format'] = (
-                    'bestvideo[ext=mp4][height<=720]+bestaudio[ext=m4a]/'
-                    'best[ext=mp4][height<=720]/'
+                    'bestvideo[ext=mp4][height<=720]+bestaudio[ext=m4a]/',
+                    'best[ext=mp4][height<=720]/',
                     'best'
                 )
 
