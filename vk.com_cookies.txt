@@ -1,0 +1,37 @@
+# Netscape HTTP Cookie File
+# https://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file! Do not edit.
+
+.vk.com	TRUE	/	TRUE	1788963575	remixlang	0
+.vk.com	TRUE	/	TRUE	1788643933	remixstlid	9110996440391219852_Uzszb3Otkb5HzcGLjJpW5deX1TJIdqPk4L0UZxXEa3k
+.vk.com	TRUE	/	TRUE	1788193345	remixstid	1095211969_5wHEeEzc81pZ655HXBkvx9UEGPLW8heXNICnC5Oc2xX
+.vk.com	TRUE	/	TRUE	1806273037	remixscreen_width	1920
+.vk.com	TRUE	/	TRUE	1806273037	remixscreen_height	1080
+.vk.com	TRUE	/	TRUE	1806273037	remixscreen_dpr	1
+.vk.com	TRUE	/	TRUE	1806273037	remixscreen_depth	24
+.vk.com	TRUE	/	TRUE	1806273039	remixdark_color_scheme	1
+.vk.com	TRUE	/	TRUE	1806273039	remixcolor_scheme_mode	auto
+.vk.com	TRUE	/	TRUE	1788723482	remixdt	0
+.vk.com	TRUE	/	FALSE	1803508237	tmr_lvid	02cc548fa3f8e801afe25a300b5a0fc1
+.vk.com	TRUE	/	FALSE	1803508237	tmr_lvidTS	1757187482872
+.vk.com	TRUE	/	TRUE	1788949630	remixuacck	aa470d48e1c8e35be1
+.vk.com	TRUE	/	TRUE	1789127518	remixuas	ZmI5MGE2Yjg4MzZiODExZTU5YzExN2I2
+.vk.com	TRUE	/	TRUE	1788830048	remixsuc	1%3A
+.vk.com	TRUE	/	TRUE	1788819080	remixdmgr	6aab95ec60e63331777fcae4b56b664e36f0f1a58d39f840aa456a3fc31227d7
+.vk.com	TRUE	/	TRUE	1806273037	remixscreen_winzoom	1
+.vk.com	TRUE	/	TRUE	1795343015	remixua	190%7C-1%7C215%7C2038370163
+.vk.com	TRUE	/	TRUE	1795844738	remixrefkey	6a4f5ab23c7c45c1f8
+.vk.com	TRUE	/	TRUE	1774819836	prcl	a025c9e22812fa
+.vk.com	TRUE	/	TRUE	1806273036	remixpuad	Kp925Wcc8azUav2xpxzFGM73Ul-GMv9-5Dxo0Id_mfk
+vk.com	FALSE	/	TRUE	1806524234	remixnsid	vk1.a.8ko6tPfoUtvN6Z5oWCUp1zMU1y_bHFfPhXH-1leGNYzTDoohE9soDSHG6VJIipSP4MXEH2_g7896MlUMhDktm0EPlVmI2jfeQZNvFiuBTEd1UvoF4Mhu-2_n_ow1aDV3u8nzbn1a2Ycgn1OZWrXsgD2pACfTMgxKlW_U6Pqj29MeVSJUa2KhiuLXp4pBYtH5
+.vk.com	TRUE	/	TRUE	1806837918	remixsid	1_ajHZR9xt_keNX8H_wiFeUHMK2g-hiNQh3tWro546exd_36NeoriDEBkDV49jTrauSwCnGvdVB3n-o5by0-6VZg
+.vk.com	TRUE	/	TRUE	1774740636	httoken	tOV7HaDrCptu5zSdvmsWf8WJv5FqI0iwOSNjJBvGlBiyUN9Jeb0aaw2xfvmxNe0IyWLTS3HSv3PGdlxb2olQm777GAP8z--PSKifiB4J-sLGTNHpQaQZMhCy0nk5Tytnbnc
+.vk.com	TRUE	/	TRUE	1775341837	remixscreen_orient	1
+.vk.com	TRUE	/	TRUE	1776033038	remixsf	1
+.vk.com	TRUE	/	TRUE	1775341839	remixgp	532554d1151f2ddb1d736bc3bfa08ad5
+.vk.com	TRUE	/	TRUE	1777329039	remixseenads	3
+.vk.com	TRUE	/	FALSE	1775341840	domain_sid	l3-BcrjYjyDgr2DnQA0hP%3A1774737039735
+vk.com	FALSE	/	FALSE	1774823440	tmr_detect	0%7C1774737040850
+.vk.com	TRUE	/	TRUE	1774737906	remixsts	%7B%22data%22%3A%5B%5B1774737042%2C%22entries_requests%22%2C1%2C%22vmoji%22%2C%22web%22%5D%2C%5B1774737042%2C%22entries_requests%22%2C1%2C%22stickers%22%2C%22web%22%5D%2C%5B1774737042%2C%22unique_adblock_users%22%2C382672827%2C%22web2%22%2C%22false%22%2Cnull%2C%22feed%22%5D%2C%5B1774737042%2C%22unique_adblock_users%22%2C382672827%2C%22web2%22%2C%22false%22%2Cnull%2C%22feed%22%5D%5D%2C%22uniqueId%22%3A43860128.18430728%7D
+.vk.com	TRUE	/	TRUE	0	remixcurr_audio	null
+.vk.com	TRUE	/	TRUE	0	remixmaudio	null

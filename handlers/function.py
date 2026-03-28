@@ -3,6 +3,7 @@ import hashlib
 import yt_dlp
 import time
 import asyncio
+import subprocess
 from aiogram.types import FSInputFile
 from yt_dlp.utils import ExtractorError, UnsupportedError
 
@@ -20,29 +21,35 @@ async def download_and_send_media(bot, chat_id, url, media_type):
             'noplaylist': True,
             'quiet': True,
             'no_warnings': True,
-            'retries': 3,
+            'retries': 5,
             'socket_timeout': 60,
-            'extractor_retries': 3,
+            'extractor_retries': 5,
 
             'http_headers': {
                 'User-Agent': 'Mozilla/5.0',
                 'Accept-Language': 'en-US,en;q=0.9',
             },
 
-            # если появятся cookies — будет работать лучше
             'cookiefile': 'cookies.txt',
+
+            # 💥 КЛЮЧЕВОЕ
+            'merge_output_format': 'mp4',
+
+            # 💥 чтобы ffmpeg работал корректно
+            'postprocessors': []
         }
 
         # 🎬 ВЫБОР ФОРМАТА
         if media_type == 'video':
-            if any(site in url for site in ["pinterest", "vk"]):
-                ydl_opts['format'] = 'best'
-            else:
-                ydl_opts['format'] = (
-                    'bestvideo[ext=mp4][height<=720]+bestaudio[ext=m4a]/',
-                    'best[ext=mp4][height<=720]/',
-                    'best'
-                )
+            ydl_opts['format'] = 'bestvideo+bestaudio/best'
+
+        elif media_type == 'audio':
+            ydl_opts['format'] = 'bestaudio/best'
+            ydl_opts['postprocessors'] = [{
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '192',
+        }]
 
         start_time = time.time()
 
@@ -52,22 +59,22 @@ async def download_and_send_media(bot, chat_id, url, media_type):
             None,
             lambda: yt_dlp.YoutubeDL(ydl_opts).extract_info(url, download=True)
         )
+        if not info:
+            raise Exception("Не удалось получить информацию о видео")
 
         ydl = yt_dlp.YoutubeDL(ydl_opts)
         filename = ydl.prepare_filename(info)
 
-        # 🎧 фиксим аудио расширение
-        if media_type == 'audio':
-            base = os.path.splitext(filename)[0]
-            for ext in ['.m4a', '.mp3', '.webm']:
-                if os.path.exists(base + ext):
-                    filename = base + ext
-                    break
-
         # 🎥 FIX WEBM → MP4
         if filename.endswith('.webm'):
             new_filename = filename.replace('.webm', '.mp4')
-            os.system(f'ffmpeg -i "{filename}" -c:v libx264 -c:a aac "{new_filename}"')
+            subprocess.run([
+                "ffmpeg",
+                "-i", filename,
+                "-c:v", "libx264",
+                "-c:a", "aac",
+                new_filename
+            ])       
             os.remove(filename)
             filename = new_filename
 

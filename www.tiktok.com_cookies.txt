@@ -1,0 +1,13 @@
+# Netscape HTTP Cookie File
+# https://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file! Do not edit.
+
+.tiktok.com	TRUE	/	TRUE	1793481587	_ttp	32knt5kwVRtB0VEXcUbRWJH9tdd
+.tiktok.com	TRUE	/	TRUE	0	tt_csrf_token	ltvinEks-zmxCur0eu-_X3OeTnQoFkIx6VoI
+.tiktok.com	TRUE	/	TRUE	1790288947	tt_chain_token	0s3RNwtAJQf83HP4UiQ0wA==
+.www.tiktok.com	TRUE	/	TRUE	1800656949	tiktok_webapp_theme_source	auto
+.www.tiktok.com	TRUE	/	TRUE	1800656949	tiktok_webapp_theme	dark
+.tiktok.com	TRUE	/	TRUE	1806272950	ttwid	1%7CGxQgetuszEeMCfKABxEPMzObTnuyYF-uXeQcX8kk7Po%7C1774736945%7C4e17bf8962255e5d766a7c8d85d23be0baa1665eb039c5d9488de8e2c1585264
+.tiktok.com	TRUE	/	TRUE	1775600952	msToken	H0mG9XMZX-vbjFnZ7u9JEF4fpUoMCualL_FB9BfHG2K6DJ3sgdzxWuIO5KlEUTs37tfO6bGnzjnRMTG9jlfczgvO9OPyxnSVRWcpvuhOCvl_SiaIbE9_NQ9LJhsVLw==
+.www.tiktok.com	TRUE	/	TRUE	1775341753	perf_feed_cache	{%22expireTimestamp%22:1774908000000%2C%22itemIds%22:[%227597058320142388488%22%2C%227600235908872375583%22%2C%227603640203332406550%22]}
+www.tiktok.com	FALSE	/	FALSE	1782512960	msToken	oo6Jpy8ULIwdsugY43kkqJf1-_qxkAKRar0Nh9HX7v9H55No6Tx1DTi_3CK0IV_51_jt6dHN3mwMmAsXPuitqz13Nr2gUbId8I6iuMiU6X2KjnntLKTPGQcXndg5eBEsyLxgXyeYN9CmjWw1RQ8LM0OI
