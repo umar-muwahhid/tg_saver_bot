@@ -32,6 +32,12 @@ async def download_and_send_media(bot, chat_id, url, media_type):
                 'Accept-Language': 'en-US,en;q=0.9',
             },
 
+            'extractor_args': {
+                'youtube': {
+                    'player_client': ['android', 'web']
+                }
+            },
+
             'cookiefile': 'cookies.txt',
 
             # 💥 КЛЮЧЕВОЕ
@@ -43,8 +49,7 @@ async def download_and_send_media(bot, chat_id, url, media_type):
 
         # 🎬 ВЫБОР ФОРМАТА
         if media_type == 'video':
-            ydl_opts['format'] = 'bestvideo+bestaudio/best'
-
+            ydl_opts['format'] = 'bestvideo+bestaudio/best/bestvideo/best'
         elif media_type == 'audio':
             ydl_opts['format'] = 'bestaudio/best'
             ydl_opts['postprocessors'] = [{
@@ -67,6 +72,9 @@ async def download_and_send_media(bot, chat_id, url, media_type):
         ydl = yt_dlp.YoutubeDL(ydl_opts)
         filename = ydl.prepare_filename(info)
 
+        # 💥 после постпроцессинга имя может измениться
+        if media_type == "audio":
+            filename = os.path.splitext(filename)[0] + ".mp3"
         # 🎥 FIX WEBM → MP4
         if filename.endswith('.webm'):
             new_filename = filename.replace('.webm', '.mp4')
