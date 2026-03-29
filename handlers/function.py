@@ -15,41 +15,53 @@ def generate_url_id(url: str):
 async def download_and_send_media(bot, chat_id, url, media_type):
     filename = None
 
+    # 🔥 FIX YOUTUBE SHORTS → NORMAL URL
+    if "youtube.com/shorts/" in url:
+        video_id = url.split("/shorts/")[1].split("?")[0]
+        url = f"https://www.youtube.com/watch?v={video_id}"
+
     try:
         ydl_opts = {
             'outtmpl': 'downloads/%(id)s.%(ext)s',
             'noplaylist': True,
             'quiet': True,
             'no_warnings': True,
-            'retries': 5,
-            'socket_timeout': 60,
-            'extractor_retries': 5,
 
-            'ffmpeg_location': '/usr/bin/ffmpeg',
+            'retries': 10,
+            'fragment_retries': 10,
+            'extractor_retries': 10,
 
-            'http_headers': {
-                'User-Agent': 'Mozilla/5.0',
-                'Accept-Language': 'en-US,en;q=0.9',
-            },
+            'socket_timeout': 30,
 
+            # 💥 КРИТИЧНО ДЛЯ YOUTUBE
             'extractor_args': {
                 'youtube': {
-                    'player_client': ['android', 'web']
+                    'player_client': ['android', 'web', 'tv_embedded'],
+                    'skip': ['dash', 'hls']
                 }
             },
 
+            # 💥 ОБХОД АНТИБОТА
+            'http_headers': {
+                'User-Agent': 'com.google.android.youtube/17.31.35 (Linux; U; Android 11)',
+            },
+
+            # 💥 НЕ МЕРЖИМ = МЕНЬШЕ ПАЛИМСЯ
+            'merge_output_format': None,
+
+            'format': 'best[ext=mp4]/best',
+
             'cookiefile': 'cookies.txt',
 
-            # 💥 КЛЮЧЕВОЕ
-            'merge_output_format': 'mp4',
-
-            # 💥 чтобы ffmpeg работал корректно
-            'postprocessors': []
+            'hls_prefer_native': True,
         }
 
         # 🎬 ВЫБОР ФОРМАТА
         if media_type == 'video':
-            ydl_opts['format'] = 'bestvideo+bestaudio/best/bestvideo/best'
+            if "youtube" in url or "youtu.be" in url:
+                ydl_opts['format'] = 'best[ext=mp4]/best'
+            else:
+                ydl_opts['format'] = 'bestvideo+bestaudio/best'
         elif media_type == 'audio':
             ydl_opts['format'] = 'bestaudio/best'
             ydl_opts['postprocessors'] = [{
@@ -62,10 +74,21 @@ async def download_and_send_media(bot, chat_id, url, media_type):
 
         loop = asyncio.get_event_loop()
 
-        info = await loop.run_in_executor(
-            None,
-            lambda: yt_dlp.YoutubeDL(ydl_opts).extract_info(url, download=True)
-        )
+        try:
+            info = await loop.run_in_executor(
+                None,
+                lambda: yt_dlp.YoutubeDL(ydl_opts).extract_info(url, download=True)
+            )
+        except Exception:
+            # 💥 fallback для YouTube
+            if "youtube" in url or "youtu.be" in url:
+                ydl_opts['format'] = 'worst[ext=mp4]/worst'
+                info = await loop.run_in_executor(
+                    None,
+                    lambda: yt_dlp.YoutubeDL(ydl_opts).extract_info(url, download=True)
+                )
+            else:
+                raise
         if not info:
             raise Exception("Не удалось получить информацию о видео")
 
